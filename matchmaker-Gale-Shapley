@@ -1,0 +1,16 @@
+initialize each person to be free  
+while (some man m is free and hasn't proposed to every woman) do  
+   w=highest ranked woman in m's list to whom m has not yet proposed  
+   if (w is free) then
+     (m,w) become engaged
+   else if (w prefers m to her fiance m') then 
+     (m,w) become engaged
+     m' become free
+return the set S of engaged pair
+
+////////////////////////////////////////////////////
+line1:Representing Men and Women=> O(n)->man、womam preference list
+line2:Identifying a Free Man=> O(1)->use a linked list to identify a free man
+line3:Whom to Propose?=> O(1)->insert a new column to man's list, named"Next",to store the next proposal order
+line4:Identifying Her Fiancé=> O(1)->insert a new column to woman's list, named "Current", to store her current partner index; 
+line6:Women's Preferences=>  O(1)->in the beginning, creat a woman ranking preference list, rather than a preference list, to store the ranking order of women's preference
