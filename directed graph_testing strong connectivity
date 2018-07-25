@@ -1,0 +1,12 @@
+testSC(G)
+1.pick any node s inG
+2.R=BFS(s,G)
+3.R_rev=BFS(s,G_rev)
+if (R=V=R_rev) then
+  return true
+else
+  return false
+  
+///////////////
+because applying BFS=>O(m+n)
+or we can apply DFS
