@@ -1,3 +1,5 @@
+////////Start from s and try the first edge leading out, and so on, until reach a dead end. Backtrack and repeat.//////////////
+
 DFS(u) //recursive procedure
 1.mark u as explored and add u to R
 2.for each (edge (u,v) incident to u) do
