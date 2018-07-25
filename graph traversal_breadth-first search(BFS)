@@ -11,6 +11,7 @@ while (L[i] is not empty) do
    i++
    
   ///////////////////////////////////
+  applying on "undirected graph".
   adjacency list is ideal for implementing BFS=> O(n+m)
   a quene/stack is fine to manage each layer list L[i], because nodes in L[i] can be in any order
   a quene is ideal for a single list L, because nodes should be in order when merging all layer lists
