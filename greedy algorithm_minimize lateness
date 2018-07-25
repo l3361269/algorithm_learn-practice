@@ -1,0 +1,17 @@
+Given: A single resource is available starting at time s. A set of requests {1, 2, ..., n}, request i requires a contiguous interval of length ti and has a deadline di.
+Goal: Schedule all requests without overlapping so as to minimize the maximum lateness.
+  Lateness: li = max{0, f(i)-di}.
+greedy rule: earliest deadline first!
+/////////////////////////////////////
+
+Min-Lateness(R,s)
+//f:the finishing time of the last scheduled request
+1. {d1,.....,dn}=sort requests in ascending order of their deadlines
+2. f=s
+3. for i from 1 to n do
+4.    assign request i to the time interval from s(i)=f to f(i)=f+ti
+5.    f=f+ti
+6. return the set of scheduled intervals [s(i), f(i)) for all i=1,...n
+///////////////////////////////////
+
+The greedy optimal schedule has no idle time.
