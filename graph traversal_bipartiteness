@@ -1,0 +1,35 @@
+////implement bipartiteness by BFS//////////////////////
+
+*/
+BFS(s) // T will be BFS tree rooted at s; layer counter i; layer list L[i]
+1. Discovered[s] = true; Discovered[v] = false for other v
+2. i = 0; L[0] = {s}; T = {};
+/*
+
+2a.color[s]=red
+
+/*
+3. while (L[i] is not empty) do
+4.    L[i+1] = {};
+5.    for each (node u∈L[i]) do
+6.       for each (edge (u, v) incident to u) do
+7.          if (Discovered[v] = false) then
+8.             Discovered[v] = true
+9.             T = T + {(u, v)}
+10.            L[i+1] = L[i+1] + {v}
+/*
+
+10a.           if ((i+1) is even) then
+10b.              color[v]=red
+10c.           else
+10d.              color[v]=blue
+
+/*
+11.    i++
+
+///////////////////////////////
+because applying be BFS=>O(n+m)
+applying on "undirected graph"
+A bipartite graph (bigraph) is a graph whose nodes can be partitioned into sets X and Y in such a way that every edge has one end in X and the other end in Y.
+X and Y are two disjoint sets.
+No two nodes within the same set are adjacent.
