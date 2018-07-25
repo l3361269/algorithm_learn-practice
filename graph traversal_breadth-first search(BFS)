@@ -1,0 +1,16 @@
+diccovered[s]=true; discoveres[v]=false for other v
+i=0; L[0]={s}; T={} //T will be BFS tree rooted at s; layer counter i; layer list L[i]
+while (L[i] is not empty) do
+   L[i+1]={}
+   for each (node u∈L[i]) do
+     for each (edge (u,v) incident to u) do
+       if (discovered[v]=false) then
+           discovered[v]=true
+           T=T+{(u,v)}
+           L[i+1]=L[i+1]+{v}
+   i++
+   
+  ///////////////////////////////////
+  adjacency list is ideal for implementing BFS=> O(n+m)
+  a quene/stack is fine to manage each layer list L[i], because nodes in L[i] can be in any order
+  a quene is ideal for a single list L, because nodes should be in order when merging all layer lists
