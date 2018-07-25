@@ -1,0 +1,24 @@
+Given: Set of requests {1, 2, ...., n}, ith request corresponds an interval with start time s(i) and finish time f(i).
+interval i: [s(i), f(i))
+Goal: Find a compatible (requests don't overlap) subset of the requests with maximum (optimal) size
+
+//////////////////////////////////////////
+
+Interval-Scheduling(R)
+//R:undetermined requests; A:accepted requests
+1. A={}
+2. while (R is not empty) do
+3.    choose a request i∈R with minimum f(i) // greedy rule
+4.    A=A+{i}
+5.    R=R-{i}-X, where X={j:j∈R and j is not compatible with i}
+6. return A
+
+//////////////////////////////////////
+running time: frome O(n^2) to O(n log n)
+ initialization:
+    O(n log n): sort R in ascending order of f(i)
+    O(n): construct a set S. S[i]=s(i). (no need to order)
+ line 3 and 5:
+    O(n): scan R once
+          we do not delete all incompatible requests in line5, only those are incompatible with i in R's order untill finding a compatible request.
+          i.e. when running i1 to line5, i2 will be deleted because it is incompatible with i1. But i3 is compatible with i, then i3 is next selected request, and no need to search other requests imcompatible with i1. 
