@@ -1,0 +1,3 @@
+initailize R={s} //R will consist of nodes to which s has a path
+while (there is an edge (u,v) where u∈R and v∉R) do //explore a new edge in order of distance from s by BFS
+  R=R+{v}
