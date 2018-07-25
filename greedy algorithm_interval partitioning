@@ -1,0 +1,19 @@
+The interval partitioning problem:
+   a.k.a. the interval coloring problem: one resource = one color
+   Use as few resources as possible
+Given: Set of requests {1, 2, ..., n}, ith request corresponds an interval with start time s(i) and finish time f(i)
+   interval i: [s(i), f(i))
+Goal: Partition these requests into a minimum number of compatible subsets, each corresponds to one resource
+
+///////////////////////////////////////////
+Interval-Partitioning(R)
+1. {I1,.....,In}=sort intervals in ascending order of their start times
+2. for j from  1 to n do
+3.    exclude the labels of all assigned intervals that are not compatible with Ij
+4.    if(there is a nonexcluded label from {1,2,,....,d} then
+5.       assign a nonexcluded label to Ij
+6.    else leave Ij unlabeled
+
+//////////////////////////////////////////
+d: The depth d of a set of intervals is the maximum number that pass over any single point on the time-line.
+The depth d is the lower bound on the number of required resources.
