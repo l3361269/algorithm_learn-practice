@@ -1,0 +1,4 @@
+mark u as explored and add u to R
+for each (edge (u,v) incident to u) do
+   if (v is not marked as explored) then
+      recursively invoke DFS(v)
