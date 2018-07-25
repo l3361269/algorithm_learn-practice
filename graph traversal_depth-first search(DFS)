@@ -1,4 +1,19 @@
-mark u as explored and add u to R
-for each (edge (u,v) incident to u) do
-   if (v is not marked as explored) then
-      recursively invoke DFS(v)
+DFS(u) //recursive procedure
+1.mark u as explored and add u to R
+2.for each (edge (u,v) incident to u) do
+3.   if (v is not marked as explored) then
+4.      recursively invoke DFS(v)
+
+///////////////////////////
+
+DFS(s) // process each adjacency list in the reverse order
+//S: a stack of nodes whose neighbors haven't been entirely empty
+1.S={s}
+2.while (S is not empty) do
+3.  remove a node u from S
+4.  if (explored[u]=false) then
+5.      explored[u]=true
+6.      for each (edge (u,v) incident to u) do
+7.         S=S+{v}
+
+///////////implement DFS by adjacency list and a stack=> O(n+m)///////////
