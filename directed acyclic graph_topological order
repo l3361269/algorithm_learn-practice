@@ -1,0 +1,19 @@
+Given a directed graph G, a topological ordering is an ordering of its nodes as v1, v2, ...., vn so that for every edge (vi, vj), we have i<j.
+Lemma: If G has a topological ordering, then G is a DAG.
+Lemma: If G has a topological ordering, then G is a DAG.
+////////////////////////////////////////////////////
+
+TopologicalOrder(G)
+1.find a node V without incoming edges
+2.order v
+3.G=G-{v} //dekete v from G
+4.if (G is not empty) then
+5.  TopologicalOrder(G)
+
+//////////////////////////////////////////////////
+time:O(n^2)->"O(m+n)" =>Maintain the following information
+  indeg(w) = # of incoming edges from undeleted nodes
+  S = set of nodes without incoming edges from undeleted nodes
+Initialization: O(m+n) via single scan through graph
+Update: line 3 deletes v ->Remove v from S
+Decrement indeg(w) for all edges from v to w, and add w to S if indeg(w) hits 0->this is O(1) per edge
