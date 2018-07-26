@@ -1,0 +1,26 @@
+Given:
+  Directed graph G = (V, E)
+  Length le = length of edge e = (u, v) ∈ E
+     the meaning of edge could be: Distance; time; cost
+   * le >=0 !!!!!!!!!!!!!!!!
+  Q: what if undirected?
+     A: 1 undirected edge = 2 directed ones
+  Source s
+Goal:
+  Shortest path Pv from s to each other node v ∈ V-{s}
+     Length of path P: l(P)= Σ(le), e ∈ P 
+     
+////////////////////////////////////////////////////////
+Dijkstra(G,l)
+// S: the set of explored nodes
+// for each u ∈ S, we store a shortest path distance d(u) from s to u
+1.  initialize S = {s}, d(s) = 0
+2.  while (S ≠ V) do
+3.      select a node v ∉ S with at least one edge from S for which
+4.          d'(v) = min(d(u)+le) where e = (u, v): u ∈ S 
+5.      add v to S and define d(v) = d'(v)  //store he shortest path form v to s
+
+////////////////////////////////////////////////////////
+line 4: Explicitly maintain d'(v) in the view of each unexplored node v instead of S
+        (每個點都有d值，預設為無限大，從S的點去更新其鄰居的d值，所以d值會越更新越小。每個iteration會更新S的node的鄰居的d值，並將d值最小的點extract進S)
+'"Binary heap" is the better data structure to implement a min priority queue.
