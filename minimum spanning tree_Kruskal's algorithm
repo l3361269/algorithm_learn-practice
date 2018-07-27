@@ -1,0 +1,38 @@
+Minimum Spanning Tree:
+
+Q: How can a cable TV company lay cable to a new neighborhood, of course, as cheaply as possible?
+A: Curiously and fortunately, this problem is a case where many greedy algorithms optimally solve.
+
+Given
+  Undirected graph G = (V, E)
+  Nonnegative cost Ce for each edge e = (u, v) ∈ V
+    Ce>=0
+Goal
+  Find a subset of edges T ⊆ E so that
+    The subgraph (V, T) is connected
+    Total cost ΣCe is minimized , where e = (u, v) ∈ V
+    (=>all nodes in V should be connected, and total selected edge cost is minimum, formimg a undirected acyclic graph.)
+    
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+one of the greedy algorithms to produce minimum spanning tree (MST)
+=> Kruskal's algorithm:
+    Start with T = {}.
+    Consider edges in ascending order of cost.
+    Insert edge e by ascending order to T as long as it does not create a cycle in T; otherwise, discard e and continue inserting next edge.
+    
+Kruskal(G,c)
+1.  {e1, e2, ....., em} = sort edges in ascending order of their costs
+2.  T = {}
+3.  for (each ei =(u, v)) do  //i: from 1 to m
+4.      if (u and v are not connected by edges in T) then // if u and v are in different subtrees
+5.          T = T + {ei} // merge these two corresponding subtrees
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+priority queue
+merging disjoint subtrees => "Union-find data structure" represents disjoint sets
+  Maintain a disjoint set for each connected component (subtree)
+  Line 1: sort edge costs
+  Line 4: "Find" twice for each edge (total m edges in G)
+  Line 5: "Union" possibly once for each edge (total n-1 edges in T)
+  Comparison sort + simple disjoint set: O(m log n)
+  Linear sort + union-find: O(m α(m, n))
