@@ -1,0 +1,31 @@
+Minimum Spanning Tree:
+
+Q: How can a cable TV company lay cable to a new neighborhood, of course, as cheaply as possible?
+A: Curiously and fortunately, this problem is a case where many greedy algorithms optimally solve.
+
+Given
+  Undirected graph G = (V, E)
+  Nonnegative cost Ce for each edge e = (u, v) ∈ V
+    Ce>=0
+Goal
+  Find a subset of edges T ⊆ E so that
+    The subgraph (V, T) is connected
+    Total cost ΣCe is minimized , where e = (u, v) ∈ V
+    (=>all nodes in V should be connected, and total selected edge cost is minimum, formimg a undirected acyclic graph.)
+    
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+one of the greedy algorithms to produce minimum spanning tree (MST)
+=> Prim's algorithm: (c.f. Dijkstra's algorithm)
+      Start with a root node s.
+      Greedily grow a tree T from s outward.
+      At each step, add the cheapest "edge e" to the partial tree T that has exactly one endpoint in T.
+      (while in Dijkstra's, it works by adding the cheapest "path" form s to the node.)
+
+Prim's(G,C)
+// S: the set of explored nodes
+// for each u ∈ S, we store a shortest distance C(u) (tree edge)
+1.  initialize S = {s}, d(s) = 0
+2.  while (S ≠ V) do
+3.      select a node v ∉ S with at least one edge from S for which
+4.          d'(v) = min(Ce), where e = (u, v): u ∈ S 
+5.      add v to S and define d(v) = d'(v)
