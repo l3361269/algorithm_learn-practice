@@ -1,0 +1,27 @@
+The closest pair of points problem
+  Given
+    A set of n points on a plane, pi is located at (xi, yi).
+  Find
+    A pair with the smallest Euclidean distance between them
+       Euclidean distance between pi and pj = [(xi - xj)2 + (yi - yj)2]1/2
+
+/////////////////////////////////////////////////////////////////////////////
+Closest-Pair(P)  //P: all points
+1. construct Px and Py  //sorting x ->O(n log n)
+2. (p*0, p*1) = Closest-Pair-Rec(Px, Py)  //->T(n)
+
+Closest-Pair-Rec(Px, Py)
+1. if |P| <= 3 then return closest pair measured by all pair-wise distances
+2. x* = (ceil(n/2))-th smallest x-coordinate in Px
+3. construct Qx, Qy, Rx, Ry   //Q,R sets ->O(n)
+4. (q*0, q*1) = Closest-Pair-Rec(Qx, Qy) // T(n/2)
+5. (r*0, r*1) = Closest-Pair-Rec(Rx, Ry) // T(n/2)
+6. d = min(d(q*0, q*1), d(r*0, r*1))
+7. L = {(x, y): x = x*}; S = {points in P within distance d of L}  //O(n)
+8. construct Sy
+9. for each s∈S do
+10. compute distance from s to each of next 15 points in Sy
+11.d(s, s') = min distance of all computed distances   // O(n)
+12.if d(s, s') < d then return (s, s')
+13.else if d(q*0, q*1) < d(r*0, r*1) then return (q*0, q*1)
+14.else return (r*0, r*1)
