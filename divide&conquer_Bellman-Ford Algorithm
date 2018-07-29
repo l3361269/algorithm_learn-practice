@@ -1,0 +1,27 @@
+The shortest path problem:
+  Given:
+    Directed graph G = (V, E), source s and destination t
+    cost Cuv = length of edge (u, v) ∈ E 
+    Cuv may be negative
+  Goal:
+    Find the shortest path from s to t
+    Length of path P: c(P)=Σ(Cuv), (u, v)∈P
+  Optimal solution:
+    OPT(i, v)    = 0     if i = 0, v = t
+                 = ∞     if i = 0, v ≠ t
+                 =min{OPT(i-1, v), min(v, w)∈E {cvw + OPT(i-1, w)}}  otherwise
+                 
+////////////////////////////////////////////////////////////////////////////  
+Bellman-Ford(G, s, t)
+// n = # of nodes in G
+// M[0.. n-1, V]: table recording optimal solutions of subproblems
+1. M[0, t] = 0
+2. foreach vÎV-{t} do
+3. M[0, v] = ¥
+4. for i = 1 to n-1 do
+5. for vÎV in any order do
+6. M[i, v]=min{M[i-1, v], min(v, w)ÎE {cvw + M[i-1, w]}}
+
+//////////////////////////////////////////////////////////////////////////
+space:n^2
+running time:O(nm)
