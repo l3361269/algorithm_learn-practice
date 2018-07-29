@@ -1,0 +1,27 @@
+Given
+  A set of n items and a knapsack
+  Item i weighs wi > 0.
+  The knapsack has capacity of W.
+Goal: 
+  Fill the knapsack so as to maximize total weight.
+  maximize Σ(wi) ,i∈S
+  
+OPT(i, w)   = 0   ,if i, w = 0
+            =OPT(i-1, w)  ,if wi > w
+            =max {OPT(i-1, w), wi + OPT(i-1, w-wi)}  ,otherwise
+            
+///////////////////////////////////////////////////////////
+Subset-sum(n, w1,...., wn, W)
+1. for w = 0, 1, ....., W do
+2. M[0, w] = 0
+3. for i = 0, 1, ....., n do
+4. M[i, 0] = 0
+5. for i = 1, 2, .., n do
+6. for w = 1, 2, .., W do
+7. if (wi > w) then
+8. M[i, w] = M[i-1, w]
+9. else
+10. M[i, w] = max {M[i-1, w], wi +M[i-1, w-wi]}
+
+///////////////////////////////////////////////////////
+Running time: O(nW) ->Pseudo-Polynomial Running Time, because W is not polynomial in input size
