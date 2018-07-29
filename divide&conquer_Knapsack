@@ -1,0 +1,15 @@
+Given
+  A set of n items and a knapsack
+  Item i weighs wi > 0 and has value vi > 0.
+  The knapsack has capacity of W.
+Goal: 
+  Fill the knapsack so as to maximize total value.
+  Maximize Σ(vi), i∈S
+Optimization problem formulation
+  max Σ(vi), i∈Si
+  s.t. Σ(wi) < W, i∈S, S⊆{1, ..., n}
+Optimal solution:
+   OPT(i, w)   = 0             if i, w = 0
+               =OPT(i-1, w)     if wi > w
+               =max {OPT(i-1, w), vi + OPT(i-1, w-wi)}     otherwise
+
