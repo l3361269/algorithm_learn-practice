@@ -1,0 +1,35 @@
+Divide-and-conquer
+   Divide: Break the input into several parts of the same type.
+   Conquer: Solve the problem in each part recursively.
+   Combine: Combine the solutions to sub-problems into an overall solution.
+ Complexity: recurrence relation
+   A divide and conquer algorithm is naturally implemented by a recursive procedure.
+   The running time of a divide and conquer algorithm is generally represented by a recurrence relation that bounds the running time recursively in terms of the running time on smaller instances.
+ Correctness: mathematical induction
+   The basic idea is mathematical induction!
+   
+//////////////////////////////////////////////////////////
+Mergesort(A, p, r)
+// A[p..r]: initially unsorted
+1. if (p < r) then
+2. q = floor((p+r)/2)  //ceiling is  fine as well
+3. Mergesort(A, p, q)
+4. Mergesort(A, q+1, r)
+5. Merge(A, p, q, r)   
+
+///////////////////////////////////////
+Running time:
+ T(n) for input size n
+ Divide: lines 1-2, D(n)
+    O(1) for array
+ Conquer: lines 3-4, 2T(n/2)
+ Combine: line 5, C(n)
+    Linear time O(n)? How?
+      Efficient merging
+      Linear number of comparisons
+      Use an auxiliary array to store the number after comparison
+      =>O(n)
+ =>T(n) = 2T(n/2) + D(n) + C(n)
+
+ Merge sort is often the best choice for sorting a linked list
+(whether heap sort is better for the data structure with index , such as array)
