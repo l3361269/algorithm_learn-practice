@@ -1,0 +1,29 @@
+Given: A set of n intervals with start/finish times, weights (values)
+  Interval i: [si, fi), vi, 1 <= i <= n
+  Find: A subset S of mutually compatible intervals with maximum total values
+
+=>optimal solutin: OPT(j) = max{{vj+OPT(p(j))}, OPT(j-1)} ,the total number od items is j.
+
+////////////////////////////////////////////////////////
+Direct Implementation: 
+// Preprocessing:
+// 1. Sort intervals by finish times: f1 <= f2 <= ... <= fn
+// 2. Compute p(1), p(2), ...., p(n)
+Compute-Opt(j)
+1. if (j = 0) then return 0
+2. else return max{{vj+Compute-Opt(p(j))}, Compute-Opt(j-1)}  //OPT(j) = max{{vj+OPT(p(j))}, OPT(j-1)}
+
+(I.)Memorization: Top-Down  //j從小到大的順序開始計算，並把計算結果都儲存起來，因為recursion，所以後面較大的j會參考前面較小的j的計算結果，查表的概念
+M-Compute-Opt(j)
+1. if (j = 0) then return 0
+2. else if (M[j] is not empty) then return M[j]  
+3. else return M[j] = max{{vj+M-Compute-Opt(p(j))}, M-Compute-Opt(j-1)}
+// running time: O(n)
+
+(II.)Iteration: Bottom-Up
+I-Compute-Opt
+1. M[0] = 0
+2. for j = 1, 2, .., n do
+3. M[j] = max{vj+M[p(j)], M[j-1]}
+//using for-loop and array
+//running time: O(n)
