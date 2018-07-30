@@ -1,0 +1,34 @@
+A flow network G = (V, E) is a directed graph
+  Ce >= 0: capacity of edge e.
+  Source s ∈ V: generates the flow
+  Sink t ∈ V: absorbs the flow
+  Internal node: u ∈ V \ {s, t}
+ 
+Flow properties
+1. Capacity conditions:
+   ∀e∈E , 0 <= f(e) <= Ce ,f(e)=flow carried by edge e
+2. Conservation conditions:
+   ∀u∈V \ {s, t}, Σf(e), e into v  = Σf(e),e out of v 
+   
+Ford-Fulkerson: residual graph
+  Pushing flow:
+    Push forward on edges with leftover capacity
+    Push backward on edges with flow
+  The residual graph Gf of G w.r.t. f:
+    V(Gf) = V(G)
+    For each e = (u, v) ∈ E(G)
+    f(e) < Ce: Forward edge: e' = (u, v), c'= Ce - f(e)
+    0 < f(e): Backward edge: e''= (v, u), c''= f(e)
+////////////////////////////////////////////////////////////
+
+Ford-Fulkerson(G, s, t)
+1.  foreach (e ∈ E) do
+2.      f(e) = 0 
+3.  construct Gf  //residual graph
+4.  while (∃ an s-t path P in Gf) do // augmenting path
+5.      b = bottleneck(P, f)
+6.      foreach (e ∈ P) do
+7.          if (e ∈ E) then f(e) = f(e) + b // forward edge
+8.          else f(eR) = f(eR) - b // backward edge
+9.      update Gf
+10. return f
